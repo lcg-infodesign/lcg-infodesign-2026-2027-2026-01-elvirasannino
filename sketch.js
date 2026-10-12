@@ -1,16 +1,16 @@
-function preload() {
-  // put preload code here 
-}
-
 //prima richiesta variabili 
 let xPulcino = 250;
 let yPulcino = 420;
-//variabili per la pioggia
+let xMax = 500;
+let yMax = 600;
+/*per la stella mi sono ispirata alla pioggia nel tutorial p5.js variables and change
+variabili per la stella*/
 let lineX = 0;
 let lineY = 0;
 
 function setup() {
-  createCanvas(500, 600);
+  createCanvas(xMax, yMax);
+  frameRate(3.5); //frequenza di aggiornamento a 3,5 fotogrammi al secondo
 }
 
 //terza richiesta primitive 
@@ -20,7 +20,6 @@ function draw() {
   fill("#5f9d48"); //prato
   rect(0, 460, 500, 140);
   ellipse(250, 470, 600, 80);
-  frameRate(3.5); //set frame rate per la stella
 
   //stella
   stroke("#e5e057");
@@ -59,7 +58,7 @@ function draw() {
     xPulcino, yPulcino-36
   );
 
-  //pulcino festa con cappellino se vuoi fai delle linee orizzontali
+  //cappellino 
   fill(240, 110, 160);
   triangle(
     xPulcino-25, yPulcino-108,
@@ -76,12 +75,12 @@ function draw() {
     xPulcino + 5.5,  yPulcino - 146
   );
 
-  //set stella to random location
-  lineX = random(0, width);
-  lineY = random(0, height/1.4); 
+  //movimento casuale stella
+  lineX = random(0, xMax);  //genera numeri randomici compresi tra 0 e 500 (escluso)
+  lineY = random(0, yMax/1.4); 
 
   //seconda richiesta ciclo for e if 
-  for (let i = 0; i<5; i++){
+  for (let i = 0; i<3; i++){
     let xPalloncino = 0;
     let yPalloncino = 0;
 
@@ -103,7 +102,8 @@ function draw() {
     stroke(180, 20, 40);
       strokeWeight(2);
       fill(221, 47, 47);
-      ellipse(xPalloncino, yPalloncino, 110, 130);
+      ellipse(xPalloncino, yPalloncino, 110, 130
+    );
   }
 }
 
